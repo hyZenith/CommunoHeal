@@ -10,6 +10,7 @@ import {
 import Login from "./pages/Auth/Login"
 import SignUp from "./pages/Auth/SignUp"
 import LandingPage from './pages//Dashboard/LandingPage'
+import HomePage from './pages/Dashboard/HomePage'
 
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Root />}/>
-          <Route path='/' exact element={ <LandingPage />}/>
+          <Route path='/LandingPage' exact element={ <LandingPage />}/>
           <Route path='login' exact element={ <Login />}/>          
           <Route path='SignUp' exact element={ <SignUp />}/>          
         </Routes>
@@ -40,10 +41,10 @@ const Root  = () => {
    
   //Redirect to dashboard if authenticated , otherwise to login
   return isAuthenticated ? (
-    <Navigate to='/dashboard'/> 
+    <Navigate to='/HomePage'/> 
     //  We can use this for MainPage
   ): (
-    <Navigate to='/login'/>
+    <Navigate to='/Login'/>
     // instead of login we can use Landing page
   ); 
 }

@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Authlayout from "../../components/layouts/Authlayout";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/input";
+import { validateEmail } from "../../utils/helper";
 import { Eye, EyeOff } from "lucide-react";
+import axiosInstance from "../../utils/axiosInstance"
+import { API_PATHS } from "../../utils/apiPaths";
+import LandingPage from "../Dashboard/LandingPage";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,12 +30,12 @@ const Login = () => {
     },
     {
       label: "Register",
-      onClick: () => navigate("/signin"),
+      onClick: () => navigate("/SignUp"),
       className: "text-white cursor-pointer hover:text-[#d1e9ff]"
     },
   ];
 
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -46,6 +51,27 @@ const Login = () => {
     setError("");
 
     // Call the login API here
+    try {
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+        email,
+        password
+      });
+      const{ token, user } = response.data;
+
+      if (token) {
+        localStorage.setItem("token", token);
+        navigate("/LandingPage"); // for Our project means Home page
+      }
+    } catch(error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      }else {
+        setError("Something went wrong. Please try again.")
+      }
+    }
+
+
+
   };
 
   return (
@@ -171,6 +197,7 @@ const Login = () => {
           {/* Logo */}
           <div className="absolute w-[282px] h-[226px] top-[13px] left-52">
             <div className="relative h-[212px] bg-[url(/src/assets/images/logo.png)] bg-cover bg-[50%_50%]">
+              {/* <div className='absolute w-[282px] h-[226px] top-0 left-0 bg-[#000000] opacity-[0.5]'></div> */}
             </div>
           </div>
         </div>
