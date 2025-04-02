@@ -13,6 +13,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,40 +39,53 @@ const Login = () => {
   
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("Login form submitted");
 
     if (!validateEmail(email)) {
+      console.log("Invalid email format");
       setError("Please enter a valid email address.");
       return;
     }
 
     if (!password) {
+      console.log("Password is empty");
       setError("Please enter a password.");
+      return;
     }
 
     setError("");
+    console.log("Attempting login with:", { email, password });
 
-    // Call the login API here
     try {
+      console.log("Making API call to:", API_PATHS.AUTH.LOGIN);
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password
       });
-      const{ token, user } = response.data;
-
-      if (token) {
-        localStorage.setItem("token", token);
-        navigate("/LandingPage"); // for Our project means Home page
+      
+      console.log("Login response:", response);
+      
+      if (response.data && response.data.token) {
+        console.log("Login successful, storing token");
+        localStorage.setItem("token", response.data.token);
+        navigate("/LandingPage");
+      } else {
+        console.log("No token received in response");
+        setError("Login failed: No token received");
       }
     } catch(error) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
-      }else {
-        setError("Something went wrong. Please try again.")
+      console.error("Login error:", error);
+      if (error.response) {
+        console.log("Error response:", error.response.data);
+        setError(error.response.data.message || "Login failed. Please try again.");
+      } else if (error.request) {
+        console.log("No response received:", error.request);
+        setError("No response from server. Please check your connection.");
+      } else {
+        console.log("Error setting up request:", error.message);
+        setError("Something went wrong. Please try again.");
       }
     }
-
-
-
   };
 
   return (
@@ -86,7 +100,12 @@ const Login = () => {
             <div className="flex flex-1 items-center justify-center px-8">
               <div className="w-full max-w-md rounded-lg bg-teal-400/30 p-8 backdrop-blur-sm">
                 <h2 className="m-25 text-5xl font-['Syne',Helvetica] text-white">login</h2>
-                <form action="">
+                {error && (
+                  <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+                    {error}
+                  </div>
+                )}
+                <form onSubmit={handleLogin}>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-white">
                       Email
@@ -103,7 +122,7 @@ const Login = () => {
                   </div>
 
                   <div className="relative">
-                    <label htmlFor="password" className="text-white">
+                    <label  className="text-white">
                       Password
                     </label>
                     <div className="relative">

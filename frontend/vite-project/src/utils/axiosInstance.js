@@ -3,46 +3,54 @@ import { BASE_URL } from './apiPaths';
 // import { response } from 'express';
 
 const axiosInstance = axios.create({
-    baseUrl: BASE_URL,
-    timeout: 1000,
+    baseURL: BASE_URL,
+    timeout: 10000,
+    withCredentials: true,
     headers: {
-        "Content-type": "application/json",
-        Accept: "application/json",
-    },
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Requested-With": "XMLHttpRequest"
+    }
 });
 
 
 // Request Interceptor
 axiosInstance.interceptors.request.use(
     (config) => {
+        console.log('Making request to:', config.url);
+        console.log('Request config:', config);
         const accessToken = localStorage.getItem("token");
         if (accessToken) {
-            config.headers.Authorization = `Bearer $(accessToken)`;
+            config.headers.Authorization = `Bearer ${accessToken}`;
         }
         return config;
     },
     (error) => {
+        console.error("Request error:", error);
         return Promise.reject(error);
     }
 );
 
 // Response Interceptor
 
-axiosInstance.interceptors.request.use(
+axiosInstance.interceptors.response.use(
     (response) => {
+        console.log('Response received:', response);
         return response;
     },
-    (error) =>{
-        // Handle common errors globally
-        if (error.response) {
-            if (error.response.status == 401){
-                // redirect to Login page
+    (error) => {
+        console.error("Response error:", error);
+        if (error.code === "ECONNABORTED") {
+            console.error("Request timeout. Please check if the server is running.");
+        } else if (error.response) {
+            console.error("Error response:", error.response);
+            if (error.response.status === 401) {
                 window.location.href = '/login';
-            } else if (error.response.status == 500) {
-                console.error("Server error. Please try again later.")
+            } else if (error.response.status === 500) {
+                console.error("Server error. Please try again later.");
             }
-        } else if (error.code == "ECONNABORTED") {
-            console.error("Request Timeout. please try again.")
+        } else if (error.request) {
+            console.error("No response received. Request details:", error.request);
         }
         return Promise.reject(error);
     }
