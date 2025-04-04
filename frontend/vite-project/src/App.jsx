@@ -11,6 +11,9 @@ import Login from "./pages/Auth/Login"
 import SignUp from "./pages/Auth/SignUp"
 import LandingPage from './pages//Dashboard/LandingPage'
 import HomePage from './pages/Dashboard/HomePage'
+import Transcript  from './pages/Dashboard/Transcript'
+import VideoConnect from './pages/Dashboard/VideoConnect'
+import Prescription from './pages/Dashboard/Prescription'
 
 
 const App = () => {
@@ -20,7 +23,11 @@ const App = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Root />}/>
-          <Route path='/LandingPage' exact element={ <LandingPage />}/>
+          <Route path='/Home' exact element={<HomePage />}/>
+          <Route path='/HomePage' exact element={<LandingPage />}/>
+          <Route path='/Prescription' exact element={<Prescription />}/>  
+          <Route path='/Transcript' exact element={<Transcript />}/>
+          <Route path='/VideoConnect' exact element={ <VideoConnect />}/>
           <Route path='login' exact element={ <Login />}/>          
           <Route path='SignUp' exact element={ <SignUp />}/>          
         </Routes>
@@ -41,10 +48,10 @@ const Root  = () => {
    
   //Redirect to dashboard if authenticated , otherwise to login
   return isAuthenticated ? (
-    <Navigate to='/HomePage'/> 
+    <Navigate to='/Home'/> 
     //  We can use this for MainPage
   ): (
-    <Navigate to='/Login'/>
+    <Navigate to='/HomePage'/>
     // instead of login we can use Landing page
   ); 
 }
