@@ -1,141 +1,261 @@
-import { Phone, Calendar, FileText, Video } from "lucide-react"
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+// Service data for mapping
+const services = [
+  {
+    icon: "/src/assets/images/video.png",
+    title: "Video Consultations",
+    description:
+      "Connect with doctors through secure video calls with AI-powered transcription.",
+  },
+  {
+    icon: "/src/assets/images/calendar.png",
+    title: "Schedule Appointments",
+    description:
+      "Book monthly check-ups with your preferred healthcare provider.",
+  },
+  {
+    icon: "/src/assets/images/prescription.png",
+    title: "Digital Prescriptions & Test Results",
+    description:
+      "Access and manage your prescriptions & test results digitally in one place.",
+  },
+  {
+    icon: "/src/assets/images/phone.png",
+    title: "Emergency Support",
+    description: "24/7 emergency support with immediate response team access.",
+  },
+];
+
+// Social media links
+const socialLinks = [
+  { icon: "/src/assets/images/email.png", alt: "Email", url: "mailto:example@example.com" },
+  { icon: "/src/assets/images/twitter.png", alt: "Twitter", url: "https://twitter.com" },
+  { icon: "/src/assets/images/youtube.png", alt: "Youtube", url: "https://youtube.com" },
+  { icon: "/src/assets/images/linkedin.png", alt: "LinkedIn", url: "https://linkedin.com" },
+];
+
+const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleRegisterClick = () => {
+    navigate("/SignUp");
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
+  const scrollToAboutUs = () => {
+    const aboutUsSection = document.getElementById("about-us-section");
+    if (aboutUsSection) {
+      aboutUsSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-6 py-4 bg-white">
-        <div className="flex items-center">
-          <a href="/" className="flex items-center">
-            <img src="/logo.png" alt="CommunoHeal Logo" className="mr-2 w-20 h-15" />
-          </a>
-        </div>
-        <div className="flex items-center space-x-4">
-          <a href="/about" className="text-gray-700 hover:text-gray-900">
-            About Us
-          </a>
-          <a href="/login" className="text-gray-700 hover:text-gray-900">
-            Login
-          </a>
-          <a href="/register" className="px-4 py-2 text-white rounded-full bg-emerald-500 hover:bg-emerald-600">
-            Register
-          </a>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-1/3 h-full bg-teal-100 rounded-br-[300px]"></div>
-        <div className="absolute bottom-0 right-0 w-2/3 h-4/5 bg-teal-50 rounded-tl-[200px]"></div>
-
-        <div className="container relative z-10 flex flex-col md:flex-row items-center px-6 py-16 mx-auto">
-          <div className="w-full md:w-1/2 mb-10 md:mb-0">
-            <h1 className="text-5xl font-bold text-teal-600">COMMUNOHEAL</h1>
-            <p className="mt-4 text-xl text-gray-700">
-              Bridging Healthcare Gaps,
-              <br />
-              One Connection at a Time
-            </p>
-          </div>
-          <div className="w-full md:w-1/2">
-            <img src="/doctor-illustration.png" alt="Healthcare Professional" className="mx-auto w-[500px] h-[400px]" />
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-16 bg-white">
-        <div className="container px-6 mx-auto">
-          <div className="p-4 mb-8 text-right bg-teal-100 rounded-full">
-            <h2 className="text-xl font-semibold text-teal-800">OUR SERVICES</h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {/* Service 1 */}
-            <div className="p-6 text-center bg-teal-50 rounded-lg">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-teal-200 rounded-full">
-                <Video className="w-8 h-8 text-teal-700" />
+    <div className="bg-white flex flex-row justify-center w-full">
+      <div className="bg-white overflow-hidden w-full max-w-[1512px] relative">
+ 
+        {/* Header */}
+        <header className="relative z-10 flex items-center justify-between px-8 py-4">
+          <div className="relative h-[196px] w-[262px] cursor-pointer" onClick={() => window.location.reload()}>
+            <div className="bg-[url(/src/assets/images/image-13.png)] bg-cover bg-[50%_50%] h-full">
+              <div className="absolute w-[163px] h-[25px] top-36 left-[50px] [font-family:'Gugi',Helvetica] font-normal text-black text-xl text-center tracking-[0] leading-5">
+                COMMUNOHEAL
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-teal-700">Video Consultations</h3>
-              <p className="text-sm text-gray-600">
-                Connect with doctors virtually through video calls with AI-powered translation.
-              </p>
-            </div>
-
-            {/* Service 2 */}
-            <div className="p-6 text-center bg-teal-50 rounded-lg">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-teal-200 rounded-full">
-                <Calendar className="w-8 h-8 text-teal-700" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-teal-700">Schedule Appointments</h3>
-              <p className="text-sm text-gray-600">Book monthly check-ups with your preferred healthcare provider.</p>
-            </div>
-
-            {/* Service 3 */}
-            <div className="p-6 text-center bg-teal-50 rounded-lg">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-teal-200 rounded-full">
-                <FileText className="w-8 h-8 text-teal-700" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-teal-700">Digital Prescriptions & Test Results</h3>
-              <p className="text-sm text-gray-600">
-                Access and manage your prescriptions and test results digitally in one place.
-              </p>
-            </div>
-
-            {/* Service 4 */}
-            <div className="p-6 text-center bg-teal-50 rounded-lg">
-              <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 bg-teal-200 rounded-full">
-                <Phone className="w-8 h-8 text-teal-700" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-teal-700">Emergency Support</h3>
-              <p className="text-sm text-gray-600">24/7 emergency support with immediate response from doctors.</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Partners Section */}
-      <section className="py-12 bg-teal-50">
-        <div className="container px-6 mx-auto">
-          <div className="p-4 mb-8 text-center bg-teal-100 rounded-full">
-            <h2 className="text-xl font-semibold text-teal-800">OUR PARTNERS</h2>
+          <div className="flex items-center gap-6">
+            <div
+              className="[font-family:'Inter',Helvetica] font-normal text-black text-2xl cursor-pointer hover:text-[#459496]"
+              onClick={scrollToAboutUs}
+            >
+              About Us
+            </div>
+            <div
+              className="[font-family:'Inter',Helvetica] font-normal text-black text-2xl cursor-pointer hover:text-[#459496]"
+              onClick={handleLoginClick}
+            >
+              Login
+            </div>
+            <button
+              className="bg-[#459496] text-[#fefefe] rounded-[40px] h-14 px-8 [font-family:'Inter',Helvetica] font-normal text-2xl"
+              onClick={handleRegisterClick}
+            >
+              Register
+            </button>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <section className="relative mt-8 px-8 bg-[url(/src/assets/images/Vector3.png)] bg-[100px_200px]">
+          <div className="flex flex-row items-center justify-between ">
+            <div className="max-w-[600px] z-10  ">
+              <h1 className="[font-family:'Belanosima',Helvetica] font-normal text-[#459496] text-[73px] text-center leading-[73px]">
+                COMMUNOHEAL
+              </h1>
+              <h2 className="[font-family:'Syne',Helvetica] font-normal text-black text-[35px] leading-[35px] mt-6">
+                Bridging Healthcare Gaps, <br />
+                One Connection at a Time
+              </h2>
+            </div>
+            <div className="relative">
+              <img
+                className="w-[814px] h-[643px] bg-blend-luminosity"
+                alt="Healthcare professional"
+                src="/src/assets/images/image 4.png"
+              />
+            </div>
+          </div>
+          <img
+            className="absolute w-[556px] h-[547px] top-[-50px] left-[-376px] z-0"
+            alt="Blob shape"
+            src="/blob-1.svg"
+          />
+          <img
+            className="absolute w-[654px] h-[664px] top-[100px] right-[-100px] z-0"
+            alt="Vector shape"
+            src="/vector-1.svg"
+          />
+        </section>
+
+        {/* Services Section */}
+        <section className="relative mt-32 px-8">
+          <div className="bg-[#009f8a52] rounded-[40px] py-4 mb-16">
+            <h2 className="[font-family:'Belanosima',Helvetica] font-normal text-[#00585b] text-[40px] text-right pr-16 leading-10">
+              OUR SERVICES
+            </h2>
           </div>
 
-          <div className="relative p-6 bg-white rounded-lg">
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="overflow-hidden rounded-lg shadow-md">
-                  <img src={`/hospital-${i}.png`} alt={`Partner Hospital ${i}`} className="object-cover w-full h-32" />
+          <div className="flex justify-center gap-16 relative z-10">
+            {services.map((service, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="w-[130px] h-[133px] bg-[#73dede80] rounded-[65px/66.26px] flex items-center justify-center mb-4">
+                  <img
+                    className="w-[52px] h-[52px]"
+                    alt={service.title}
+                    src={service.icon}
+                  />
                 </div>
+                <h3 className="[font-family:'Belanosima',Helvetica] font-normal text-black text-2xl text-center leading-6 mb-4">
+                  {service.title}
+                </h3>
+                <p className="[font-family:'Inter',Helvetica] font-normal italic text-black text-2xl text-center leading-6 max-w-[290px]">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <img
+            className="absolute w-[1053px] h-[1049px] top-[10px] left-[-567px] z-0"
+            alt="Blob shape"
+            src="/blob-3.svg"
+          />
+          <img
+            className="absolute w-[437px] h-[429px] top-[420px] right-[137px] z-0"
+            alt="Blob shape"
+            src="/blob-4.svg"
+          />
+        </section>
+
+        {/* Partners Section */}
+        <section className="relative mt-32 px-8">
+          <div className="bg-[#009f8a52] rounded-[40px] py-4 mb-16">
+            <h2 className="[font-family:'Belanosima',Helvetica] font-normal text-[#00585b] text-[40px] text-center leading-10">
+              OUR PARTNERS
+            </h2>
+          
+          </div>
+      
+          <div className="border-none shadow-none">
+            <div className="p-0">
+            <p className="[font-family:'Inter',Helvetica] font-normal italic text-black text-xl text-center leading-5 mb-8">
+                  Leading healthcare institutions working together for better
+                  community health
+                </p>
+              <div className="bg-[url(/src/assets/images/Rectangle52.png)] bg-no-repeat bg-cover h-[623px] rounded-[50px] p-8">
+               
+              </div>
+            </div>
+          </div>
+
+          <p className="[font-family:'Inter',Helvetica] font-normal italic text-black text-xl text-center leading-5 mt-8">
+            Want to be a part of this movement? Join us and bring healthcare
+            where it's needed most!
+          </p>
+
+          <img
+            className="absolute w-[354px] h-[322px] top-[400px] right-[200px] z-0"
+            alt="Blob shape"
+            src="/blob-2.svg"
+          />
+          <img
+            className="absolute w-[368px] h-96 top-[450px] right-[-180px] z-0"
+            alt="Blob shape"
+            src="/blob-5.svg"
+          />
+        </section>
+
+        {/* About Us Section */}
+        <section id="about-us-section" className="relative mt-32 px-8">
+          <div className="border-none shadow-none">
+            <div className="bg-[url(/src/assets/images/rectangle-45.svg)] bg-no-repeat bg-cover rounded-lg p-8">
+              <h2 className="[font-family:'Syne',Helvetica] font-normal text-black text-[40px] leading-10 mb-8">
+                ABOUT US
+              </h2>
+              <p className="[font-family:'Syne',Helvetica] font-normal text-black text-3xl leading-[30px] max-w-[1121px]">
+                At CommunoHeal, our mission is simple yet impactful — to ensure
+                that every community, no matter how remote or under-resourced,
+                receives timely and adequate healthcare services.
+              </p>
+            </div>
+          </div>
+
+          <img
+            className="absolute w-[560px] h-[498px] top-[100px] left-[-193px] z-0"
+            alt="Blob shape"
+            src="/blob.svg"
+          />
+          <img
+            className="absolute w-[651px] h-[679px] top-[200px] right-[-125px] z-0"
+            alt="Blob shape"
+            src="/blob-6.svg"
+          />
+        </section>
+
+          <div className=" mt-[100px] w-full">
+              <hr />
+          </div>
+
+        {/* Footer */}
+        <footer className="mt-32 relative">
+          <div className="mb-8" />
+
+          <div className="flex justify-between items-center px-8 pb-8">
+            <div className="[font-family:'Syne',Helvetica] font-normal text-black text-2xl tracking-[0] leading-6">
+              Office: IT Department, Gauhati University, Assam - 781013
+            </div>
+
+            <div className="flex items-center gap-6">
+              {socialLinks.map((link, index) => (
+                <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="w-[60px] h-[60px]">
+                  <img
+                    className="w-full h-full object-contain"
+                    alt={link.alt}
+                    src={link.icon}
+                  />
+                </a>
               ))}
             </div>
-
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-teal-100 rounded-full flex items-center justify-center">
-              <div className="text-center text-teal-800 text-lg font-semibold">COMMUNOHEAL</div>
-            </div>
           </div>
-
-          <p className="mt-16 text-center text-sm text-gray-600">
-            Leading healthcare institutions working together for better community health.
-            <br />
-            Would you be a part of this movement? Join us and bring healthcare where it's needed most!
-          </p>
-        </div>
-      </section>
-
-      {/* About Us Section */}
-      <section className="py-12 bg-white">
-        <div className="container px-6 mx-auto">
-          <div className="p-4 mb-8 text-left bg-teal-100 rounded-full">
-            <h2 className="text-xl font-semibold text-teal-800">ABOUT US</h2>
-          </div>
-
-          {/* Content will go here */}
-        </div>
-      </section>
+        </footer>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default HomePage;
