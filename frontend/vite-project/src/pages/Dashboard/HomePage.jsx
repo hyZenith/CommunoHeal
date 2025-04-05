@@ -30,7 +30,7 @@ const HomePage = () => {
           </div>
 
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="relative w-[45px] h-[45px] bg-[url(/src/assets/images/union.svg)] bg-[100%_100%]">
+            <div className="relative w-[45px] h-[45px] bg-[url(/src/assets/images/profile_union.svg)] bg-[100%_100%]">
               <img
                 className="absolute w-[15px] h-[15px] top-2.5 left-[15px]"
                 alt="Vector"

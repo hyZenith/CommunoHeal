@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, ArrowLeftIcon } from "lucide-react";
 
 const Profile = () => {
   // Profile data
@@ -51,13 +51,19 @@ const Profile = () => {
     <div className="bg-white flex flex-row justify-center w-full">
       <div className=" bg-white  w-full max-w-[1800px] min-h-[982px] relative">
         {/* Header Section */}
-        <header className=" w-full h-[129px] mt-4 bg-[url(/src/assets/images/section.svg)]  bg-cover bg-[50%_50%] rounded-full">
+        <header className=" w-full h-[129px] mt-4 bg-[url(/src/assets/images/section.svg)]  bg-cover bg-[50%_50%] rounded-full relative">
           <div className="pt-3 pl-[76px] font-medium text-black text-xl">
             Hi Gargee
           </div>
           <h1 className="w-[370px] mt-[20px] ml-[49px] font-['Poppins',Helvetica] font-bold text-black text-[40px] text-center">
             Welcome Back!
           </h1>
+          <button
+            className="absolute top-6 right-7 w-16 h-16 border-2 border-black rounded-full flex items-center justify-center shadow-md hover:bg-gray-200"
+            onClick={() => window.location.href = '/home'}
+          >
+            <ArrowLeftIcon className="w-16 h-16 text-black" />
+          </button>
         </header>
 
         {/* Profile Section */}
@@ -218,12 +224,18 @@ const Profile = () => {
                         >
                           <div
                             className={`h-11 flex w-[50px] items-center justify-center gap-2.5 px-5 py-[13px] relative left-0.5 rounded-md
-                            ${isCurrentMonth ? "bg-basicwhite shadow-basic" : ""}
+                            ${
+                              isCurrentMonth ? "bg-basicwhite shadow-basic" : ""
+                            }
                             ${isSelected ? "bg-light-modeprimaryblue" : ""}`}
                           >
                             <div
                               className={`relative w-fit mt-[-0.50px] font-['Lexend',Helvetica] font-medium text-lg text-center tracking-[0] leading-[18px] whitespace-nowrap
-                              ${isCurrentMonth ? "text-regular" : "text-[#00175326]"}
+                              ${
+                                isCurrentMonth
+                                  ? "text-regular"
+                                  : "text-[#00175326]"
+                              }
                               ${isSelected ? "text-basicwhite" : ""}`}
                             >
                               {day === 0 ? "0" : day}
@@ -238,9 +250,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        
-                {/* Address Card */}
-                <div className="w-[775px] h-[350px] absolute top-[610px] left-[697px] bg-[#b9eeee] rounded-[50px] shadow-[0px_4px_4px_#00000040] border-none">
+
+        {/* Address Card */}
+        <div className="w-[775px] h-[350px] absolute top-[610px] left-[750px] bg-[#b9eeee] rounded-[50px] shadow-[0px_4px_4px_#00000040] border-none">
           <div className="p-0 h-full relative">
             <h2 className="absolute top-[19px] left-[78px] font-['Poppins',Helvetica] font-extrabold text-black text-2xl text-center">
               Address
@@ -263,6 +275,11 @@ const Profile = () => {
               Edit
             </button>
           </div>
+        </div>
+
+        {/* New Div */}
+        <div className="w-[501px] h-[420px] absolute top-40 left-[1200px]  rounded-[50px]  border-none">
+         <img src="/src/assets/images/scenery.png" alt="" />
         </div>
       </div>
     </div>
