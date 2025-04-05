@@ -14,6 +14,7 @@ import HomePage from './pages/Dashboard/HomePage'
 import Transcript  from './pages/Dashboard/Transcript'
 import VideoConnect from './pages/Dashboard/VideoConnect'
 import Prescription from './pages/Dashboard/Prescription'
+import Profile from './pages/Dashboard/Profile'
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/' element={<Root />}/>
           <Route path='/Home' exact element={<HomePage />}/>
           <Route path='/HomePage' exact element={<LandingPage />}/>
+          <Route path='/Profile' exact element={<Profile />}/>
           <Route path='/Prescription' exact element={<Prescription />}/>  
           <Route path='/Transcript' exact element={<Transcript />}/>
           <Route path='/VideoConnect' exact element={ <VideoConnect />}/>

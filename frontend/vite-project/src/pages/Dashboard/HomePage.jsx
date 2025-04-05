@@ -15,21 +15,21 @@ const HomePage = () => {
 
         {/* Navigatin Bar */}
         <div className="absolute w-[641px] h-24 top-[65px] left-[425px] bg-[#a8f3ffe3] rounded-[20px] flex items-center justify-between px-8">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer">
             <HomeIcon className="w-10 h-10 text-[#26766b]" />
             <span className="[font-family:'Belanosima',Helvetica] font-normal text-[#26766b] text-4xl">
               Home
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer">
             <MessageSquareIcon className="w-10 h-10 text-[#26766c]" />
             <span className="[font-family:'Belanosima',Helvetica] font-normal text-[#26766c] text-4xl">
               Chat
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer">
             <div className="relative w-[45px] h-[45px] bg-[url(/src/assets/images/union.svg)] bg-[100%_100%]">
               <img
                 className="absolute w-[15px] h-[15px] top-2.5 left-[15px]"
