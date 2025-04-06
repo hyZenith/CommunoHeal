@@ -105,7 +105,10 @@ const Profile = () => {
               {profileData.email}
             </div>
 
-            <button className="absolute top-[227px] left-[417px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white">
+            <button
+              className="absolute top-[227px] left-[417px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white"
+              onClick={() => window.location.href = '/ProfileEdit'}
+            >
               Edit
             </button>
           </div>
@@ -139,7 +142,10 @@ const Profile = () => {
               </div>
             ))}
 
-            <button className="absolute top-[417px] left-[417px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white">
+            <button
+              className="absolute top-[417px] left-[417px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white"
+              onClick={() => window.location.href = '/ProfileEdit'}
+            >
               Edit
             </button>
           </div>
@@ -271,15 +277,22 @@ const Profile = () => {
               ))}
             </div>
 
-            <button className="absolute top-[289px] left-[640px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white">
+            <button
+              className="absolute top-[289px] left-[640px] w-[98px] h-[42px] bg-[#4eb7b7] rounded-[7.49px] hover:bg-[#3a9999] text-white"
+              onClick={() => window.location.href = '/ProfileEdit'}
+            >
               Edit
             </button>
           </div>
         </div>
 
         {/* New Div */}
-        <div className="w-[501px] h-[420px] absolute top-40 left-[1200px]  rounded-[50px]  border-none">
-         <img src="/src/assets/images/scenery.png" alt="" />
+        <div
+          className="w-[501px] h-[420px] absolute top-40 left-[1200px]  rounded-[50px]  border-none"
+          onClick={() => window.location.href = '/ProfileEdit'}
+          style={{ cursor: "pointer" }}
+        >
+          <img src="/src/assets/images/scenery.png" alt="" />
         </div>
       </div>
     </div>

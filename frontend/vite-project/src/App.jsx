@@ -15,7 +15,7 @@ import Transcript  from './pages/Dashboard/Transcript'
 import VideoConnect from './pages/Dashboard/VideoConnect'
 import Prescription from './pages/Dashboard/Prescription'
 import Profile from './pages/Dashboard/Profile'
-
+import  ProfileEdit  from './pages/Dashboard/ProfileEditPage/ProfileEdit'
 
 const App = () => {
 
@@ -30,6 +30,7 @@ const App = () => {
           <Route path='/Prescription' exact element={<Prescription />}/>  
           <Route path='/Transcript' exact element={<Transcript />}/>
           <Route path='/VideoConnect' exact element={ <VideoConnect />}/>
+          <Route path='/ProfileEdit' exact element={ <ProfileEdit />}/>
           <Route path='login' exact element={ <Login />}/>          
           <Route path='SignUp' exact element={ <SignUp />}/>          
         </Routes>

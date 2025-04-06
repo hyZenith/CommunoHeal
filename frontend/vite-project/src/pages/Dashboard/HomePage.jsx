@@ -1,12 +1,18 @@
 import React from "react";
 import { HomeIcon, MessageSquareIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className=" bg-white overflow-hidden w-full h-[915px]">
         <div className="absolute w-[282px] h-[226px] top-1 left-0">
-          <div  className="relative h-52 top-1 bg-[url(/src/assets/images/image-13.png)] bg-cover bg-[50%_50%] cursor-pointer">
+          <div
+            className="relative h-52 top-1 bg-[url(/src/assets/images/image-13.png)] bg-cover bg-[50%_50%] cursor-pointer"
+            onClick={() => window.location.reload()}
+          >
             <div className="absolute w-[175px] h-[26px] top-[145px] left-[53px] [font-family:'Gugi',Helvetica] font-normal text-black text-xl text-center tracking-[0] leading-5">
               COMMUNOHEAL
             </div>
@@ -29,7 +35,7 @@ const HomePage = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 cursor-pointer">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/profile')}>
             <div className="relative w-[45px] h-[45px] bg-[url(/src/assets/images/profile_union.svg)] bg-[100%_100%]">
               <img
                 className="absolute w-[15px] h-[15px] top-2.5 left-[15px]"
@@ -88,6 +94,7 @@ const HomePage = () => {
           <div className="absolute top-[453px] left-[82px] flex gap-[73px]">
             <div 
               className={`w-[400px] h-[191px] bg-[#30b8cd7a] rounded-[50px] shadow-[13px_12px_9.2px_#00000040] relative overflow-hidden cursor-pointer`}
+              onClick={() => navigate('/prescription')}
             >
               <div className="flex flex-col items-center justify-center h-full p-0">
                 <div className="flex items-center gap-2 mt-[72px]">
@@ -105,6 +112,7 @@ const HomePage = () => {
             </div>
             <div
               className={`w-[400px] h-[191px] bg-[#30b8cd7a] rounded-[50px] shadow-[13px_12px_9.2px_#00000040] relative overflow-hidden cursor-pointer`}
+              onClick={() => navigate('/videoconnect')}
             >
               <div className="flex flex-col items-center justify-center h-full p-0">
                 <div className="flex items-center gap-2 mt-[72px]">
@@ -122,6 +130,7 @@ const HomePage = () => {
             </div>
             <div
               className={`w-[400px] h-[191px] bg-[#30b8cd7a] rounded-[50px] shadow-[13px_12px_9.2px_#00000040] relative overflow-hidden cursor-pointer`}
+              onClick={() => navigate('/transcript')}
             >
               <div className="flex flex-col items-center justify-center h-full p-0">
                 <div className="flex items-center gap-2 mt-[72px]">
