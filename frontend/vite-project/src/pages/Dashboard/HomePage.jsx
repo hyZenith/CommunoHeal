@@ -5,6 +5,12 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const navigate = useNavigate();
 
+  const handleEmergencyClick = () => {
+    setTimeout(() => {
+      navigate("/videocall"); // Redirect to videocall page after 1 second
+    }, 1000);
+  };
+
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className=" bg-white overflow-hidden w-full h-[915px]">
@@ -83,6 +89,7 @@ const HomePage = () => {
                     id="emergency"
                     name="feeling"
                     className="h-6 w-6"
+                    onClick={handleEmergencyClick} // Trigger redirection on click
                   />
                   <label htmlFor="emergency" className="text-red-500"> I need help as soon as possible! (emergency)
                   </label>
