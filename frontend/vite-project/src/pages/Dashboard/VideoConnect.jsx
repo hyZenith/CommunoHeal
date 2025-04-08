@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import videocall from './videocall'
 
 // Data for specialists to enable mapping
 const specialists = [
@@ -29,6 +31,8 @@ const specialists = [
 ];
 
 const VideoConnect = () => {
+  const navigate = useNavigate(); // Initialize navigate function
+
   return (
     <div className="bg-white flex flex-row justify-center w-full">
       <div className="bg-white overflow-hidden w-full max-w-[1512px] relative py-10">
@@ -79,7 +83,10 @@ const VideoConnect = () => {
                       {specialist.name}
                     </div>
                   </div>
-                  <div className="flex items-center cursor-pointer">
+                  <div
+                    className="flex items-center cursor-pointer"
+                    onClick={() => navigate("/videocall")} // Redirect to VideoCall page
+                  >
                     <img
                       className="w-[66px] h-[66px] object-cover"
                       alt="Video call"
@@ -96,4 +103,5 @@ const VideoConnect = () => {
     </div>
   );
 };
+
 export default VideoConnect;

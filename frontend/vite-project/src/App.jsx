@@ -16,6 +16,7 @@ import VideoConnect from './pages/Dashboard/VideoConnect'
 import Prescription from './pages/Dashboard/Prescription'
 import Profile from './pages/Dashboard/Profile'
 import  ProfileEdit  from './pages/Dashboard/ProfileEditPage/ProfileEdit'
+import VideoCall from './pages/Dashboard/videocall'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path='/VideoConnect' exact element={ <VideoConnect />}/>
           <Route path='/ProfileEdit' exact element={ <ProfileEdit />}/>
           <Route path='login' exact element={ <Login />}/>          
+          <Route path='videocall' exact element={ <VideoCall />}/>
           <Route path='SignUp' exact element={ <SignUp />}/>          
         </Routes>
       </Router>
